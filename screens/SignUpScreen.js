@@ -25,14 +25,14 @@ class SignUpScreen extends Component {
 		const options = {
 			permissions: ['public_profile', 'email', 'user_friends'],
 		}
-		const {type, token} = await expo.Facebook.logInWithReadPermissionsAsync('314861495597258', options)
+		const {type, token} = await expo.Facebook.logInWithReadPermissionsAsync('', options)
 		if (type === 'success') {
 			const response = await fetch(`https://graph.facebook.com/me?fields=email,name,friends&access_token=${token}`)
-			const name = response.json().name
+			const name = 'Peter'
 
 			this.authenticate(token)
-			firebase.database().ref('users/').set({
-		    name: response.json().name
+			firebase.database().ref('users/' + 'Al1jx9pzBPYBGTeyn0643G4AZ7v2').set({
+		    name: name
 
 		  });
 			this.props.navigation.navigate('main');
